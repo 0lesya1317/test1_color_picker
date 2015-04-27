@@ -22,9 +22,36 @@
 						$("#full").css('background-color', '#'+hex);
 						$(el).css('background-color', '#'+hex);
 						$(el).colpickHide();
+						
 					}
 				}).css('background-color', '#ff8800');
 			</script>
+			
+			
+			
+			<button>Return color</button>
+			<script>
+			$(document).ready(function(){
+    			$("button").click(function(){
+    				var color = '';
+					var x = $("#full").css("background-color");
+					//var x = $("#test").css("color");
+    				hexc(x);
+    				//alert(color);
+    				document.write (color);
+					function hexc(colorval) {
+    					var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    					delete(parts[0]);
+    					for (var i = 1; i <= 3; ++i) {
+        					parts[i] = parseInt(parts[i]).toString(16);
+        					if (parts[i].length == 1) parts[i] = '0' + parts[i];
+    					}
+    					color = '#' + parts.join('');
+					}
+    			});
+			});
+			</script>
+			
 			<style>
 			.color-box {
 				float:left;
@@ -60,7 +87,7 @@
 			}
 			</style>
 			<br /><br /><br />
-			<div id='test'><b>Test Test Test Test Test</b></div>
+			<div id="test"><b>Test Test Test Test Test</b></div>
         </div>
         
     </body>
